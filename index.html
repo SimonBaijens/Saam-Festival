@@ -156,12 +156,24 @@
             z-index: 1;
         }
 
-        /* LOGO PLACEHOLDER - vervang door echte afbeelding */
-        .logo-placeholder {
-            font-size: 2.5rem; /* Kleiner op mobile */
-            color: var(--magenta);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
+        /* LOGO STYLING - responsive voor alle schermformaten */
+        .hero-logo img {
+            max-width: 90%; /* Maximaal 90% van container breedte op mobile */
+            width: 250px; /* Standaard breedte */
+            height: auto; /* Behoud verhoudingen */
+            display: block;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-logo img {
+                width: 350px; /* Groter op tablet */
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-logo img {
+                width: 400px; /* Nog groter op desktop */
+            }
         }
 
         .hero h1 {
@@ -559,46 +571,54 @@
             color: var(--dark-gray);
         }
 
-        .rsvp-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            color: var(--dark-blue);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        #rsvpForm input,
+        #rsvpForm select,
+        #rsvpForm textarea {
             padding: 0.8rem;
             border: 2px solid var(--soft-yellow);
             border-radius: 8px;
-            font-family: 'Inter', sans-serif; /* Vervang door 'Trend Sans Four' */
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
             transition: border-color 0.3s ease;
             background-color: var(--white);
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        #rsvpForm input:focus,
+        #rsvpForm select:focus,
+        #rsvpForm textarea:focus {
             outline: none;
             border-color: var(--magenta);
+            background-color: var(--white);
+        }
+
+        #rsvpForm button[type="submit"] {
+            background-color: var(--magenta);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(230, 31, 147, 0.3);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        #rsvpForm button[type="submit"]:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 48, 96, 0.3);
+        }
+
+        #rsvp-resultaat {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            text-align: center;
         }
 
         /* FOOTER */
@@ -798,15 +818,9 @@
         <div class="hero-logo">
             <!-- PLACEHOLDER: Vervang dit met jullie logo -->
             <img src="Images\SAAM LOGO-2.png" alt="SAAM Festival Logo">
-                
-
-            </div>
         </div>
         
         <div class="hero-content">
-            <!-- SAAM FESTIVAL TEKST -->
-           <!-- <div class="logo-placeholder">SAAM FESTIVAL</div> -->
-            
             <!-- Namen van het bruidspaar -->
             <h1 class="couple-names">Janske & Tian</h1>
             
@@ -962,7 +976,7 @@
                     <p>Michelle is een echte creatieveling en verlaat haar huis nooit zonder een tas vol stiften, boekjes, prittstiften en fineliners. Zonder dat je er een muntje in hoeft te gooien, verrast ze je met de meest out-of-the-box ideeën en zet ze menig hersenpan in de marinade. Ze weet Janske altijd te prikkelen om anders te denken, wat ooit bijna leidde tot een best-seller borrelplank. Dat concept haalde het nét niet, maar gelukkig biedt dit festival nieuwe kansen. Daarnaast is Michelle een ware duizendpoot, met bakken ervaring. Niet alleen professioneel, maar ook als organisator van haar eigen jaarlijkse festival in de Achterhoek. Daar maken de dogs nu plaats voor een bruidspaar, en de glitters kan ze gelukkig gewoon hergebruiken. Haar aanstekelijke enthousiasme en creatieve brein maken haar tot een fantastische aanvulling!</p>
                     
                     <p style="margin-top: 1.5rem;"><strong>Maartje</strong></p>
-                    <p>Met Maartje is het altijd feest: keten, lachen en vooral losgaan. Ze weet als geen ander hoe je een borrel moet aangieren en zodra ze de muziek in handen krijgt, ben je verzekerd van urenlang certified bangers. Een feestje is pas écht compleet na minimaal twee keer Love Story van Taylor Swift, en het gaat pas goed los als haar vrolijke hupdansje voorbij komt. Janske en Maartje delen een middelbare school (al wisten ze dat toen zelf niet), een jaarclub én een hockeyteam. En naast al dat moois heeft Maartje nog een absolute superkracht: haar gigantische borrelplanken. Daarmee verrast ze iedereen en maakt ze van iedere borrel een smakelijk feestje. Wij kijken er enorm naar uit om Maartje’s energie, creativiteit en borrelplank-magic terug te zien bij onze festival crew!</p>
+                    <p>Met Maartje is het altijd feest: keten, lachen en vooral losgaan. Ze weet als geen ander hoe je een borrel moet aangieren en zodra ze de muziek in handen krijgt, ben je verzekerd van urenlang certified bangers. Een feestje is pas écht compleet na minimaal twee keer Love Story van Taylor Swift, en het gaat pas goed los als haar vrolijke hupdansje voorbij komt. Janske en Maartje delen een middelbare school (al wisten ze dat toen zelf niet), een jaarclub én een hockeyteam. En naast al dat moois heeft Maartje nog een absolute superkracht: haar gigantische borrelplanken. Daarmee verrast ze iedereen en maakt ze van iedere borrel een smakelijk feestje. Wij kijken er enorm naar uit om Maartje's energie, creativiteit en borrelplank-magic terug te zien bij onze festival crew!</p>
                     
                     <p style="margin-top: 1.5rem;"><strong>Cas</strong></p>
                     <p>Je hebt werkpaarden en sierpaarden en er is heel weinig sierlijks aan dit paard. Cas was waarschijnlijk blij om te horen dat hij er een project bij kon gaan doen bovenop zijn onderneming (red. bikeflip: want kinderen groeien en fietsen niet #sluikreclame). Want ja er zitten toch 24 uur in een dag! Als je deze werkmentaliteit combineert met zijn extreem billige creativiteit dan weet je dat je kunt rekenen op een wonder van de action. Precies wat we zoeken! Deze hulp is echter niet vanzelfsprekend. Daarvoor moet je tenminste traangas hebben ingeademd in Nicaragua, een standbeeld hebben opgehaald in Lelystad en een bloedzuiger op je voet hebben getrotseerd omdat je de hike op slippers dacht te kunnen doen.</p>
@@ -999,19 +1013,6 @@
                         <p>Tian en zijn zussen hebben vroeger ongeveer vijftig keer de wereld gered vanaf hun halfhoogslaper c.q. driemaster c.q. bunker, meestal nog voor het avondeten waar zij brood met spinnen aten (geen dank hoor!) Er kwamen vele illustere antagonisten voorbij als Randy en Björn, maar te voet of te skelter kwam het altijd weer goed. Later toen de fantasie niet toereikend genoeg was om voor wereldvrede te gaan, versloegen zij met gemak bananenshots en golfkarren.</p>
                         <p>Voor een groot deel van bovenstaande kunnen maar enkelen getuigen. Loni is er daar een van, en binnenkort komt daar nog een getuigenis bij!</p>
                         <!-- <div class="credit-image">[Foto getuigen]</div> -->
-                    </div>
-                </div>
-                
-                <!-- Webdesigner uitklapbaar -->
-                <div class="credit-item">
-                    <div class="credit-header">
-                        <h3>Webdesigner</h3>
-                        <span class="credit-toggle">+</span>
-                    </div>
-                    <div class="credit-content">
-                        <p>[Naam webdesigner]</p>
-                        <p>[Leuke tekst over webdesigner]</p>
-                        <div class="credit-image">[Foto webdesigner]</div>
                     </div>
                 </div>
                 
@@ -1126,31 +1127,59 @@
                 <p class="rsvp-text">We kunnen niet wachten om dit festival met jullie te vieren! Laat ons weten of je erbij bent.</p>
                 
                 <!-- RSVP FORMULIER -->
-<form id="rsvpForm">
-  <input type="text" id="naam" name="naam" placeholder="Naam" required>
-  <input type="email" id="email" name="email" placeholder="E-mail" required>
-  <select id="aanwezigheid" name="aanwezigheid" required>
-    <option value="">Aanwezig?</option>
-    <option value="Ja">Ja</option>
-    <option value="Nee">Nee</option>
-  </select>
-  <select id="aantal" name="aantal" required>
-    <option value="">Aantal personen</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-  </select>
-  <select id="kamperen" name="kamperen" required>
-    <option value="">Kamperen?</option>
-    <option value="Ja">Ja</option>
-    <option value="Nee">Nee</option>
-  </select>
-  <textarea id="opmerkingen" name="opmerkingen" placeholder="Opmerkingen"></textarea>
-  <button type="submit">Verstuur RSVP</button>
-</form>
-<div id="rsvp-resultaat"></div>
-                
-
-                
+                <form id="rsvpForm">
+                    <!-- Naam -->
+                    <div class="form-group">
+                        <label for="naam">Naam</label>
+                        <input type="text" id="naam" name="naam" placeholder=" " required>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                    </div>
+                    
+                    <!-- Aanwezigheid -->
+                    <div class="form-group">
+                        <label for="aanwezigheid">Aanwezigheid</label>
+                        <select id="aanwezigheid" name="aanwezigheid" required>
+                            <option value="">Selecteer een optie</option>
+                            <option value="Ja">Ja</option>
+                            <option value="Nee">Nee</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Aantal personen -->
+                    <div class="form-group">
+                        <label for="aantal">Aantal personen</label>
+                        <select id="aantal" name="aantal" required>
+                            <option value="">Selecteer aantal</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Kamperen -->
+                    <div class="form-group">
+                        <label for="kamperen">Kamperen?</label>
+                        <select id="kamperen" name="kamperen" required>
+                            <option value="">Selecteer een optie</option>
+                            <option value="Ja">Ja</option>
+                            <option value="Nee">Nee</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Opmerkingen -->
+                    <div class="form-group">
+                        <label for="opmerkingen">Dieetwensen / Opmerkingen</label>
+                        <textarea id="opmerkingen" name="opmerkingen" rows="3" placeholder="Allergieën, dieetwensen of andere opmerkingen"></textarea>
+                    </div>
+                    
+                    <!-- Submit knop -->
+                    <button type="submit">Verstuur RSVP</button>
+                </form>
+                <div id="rsvp-resultaat"></div>
             </div>
         </div>
     </section>
@@ -1302,3 +1331,29 @@ window.onload = function() {
 </body>
 
 </html>
+rsvpForm {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background-color: var(--light-pink);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid var(--soft-yellow);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        #
