@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAAM Festival - Janske & Tian</title>
+    
+    <!-- LETTERTYPE IMPORTS -->
+    <!-- The Seasons voor titels - als dit font niet werkt, vervang door een ander sierlijk font -->
+    <link href="https://fonts.googleapis.com/css2?family=The+Seasons:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Inter als alternatief voor Trend Sans Four -->
+    <!-- Voor Trend Sans Four: koop een licentie op https://www.myfonts.com/fonts/latinotype/trend-sans/ -->
+    <!-- En gebruik dan: @font-face om het te laden -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* RESET EN BASIS INSTELLINGEN */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* KLEUR VARIABELEN - makkelijk aan te passen */
+        :root {
+            --soft-yellow: #fff7ad;     /* Zachtgeel */
+            --light-pink: #ffa9f9;      /* Lichtroze */
+            --dark-blue: #2c3060;       /* Donkerblauw */
+            --magenta: #e61f93;         /* Magenta */
+            --white: #ffffff;           /* Wit */
+            --light-gray: #f8f8f8;      /* Lichtgrijs */
+            --dark-gray: #333333;       /* Donkergrijs */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Vervang door 'Trend Sans Four' als je het hebt */
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        /* TYPOGRAFIE INSTELLINGEN */
+        h1, h2, .couple-names {
+            font-family: 'The Seasons', serif; /* Hoofdlettertype voor titels */
+            font-weight: 400;
+        }
+
+        h3, h4, .nav-link, .btn-primary {
+            font-family: 'Inter', sans-serif; /* Vervang door 'Trend Sans Four' als je het hebt */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* NAVIGATIE - MOBILE FIRST */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(44, 48, 96, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.5rem 0; /* Kleinere padding voor mobile */
+            transition: all 0.3s ease;
+        }
+
+        /* Bereken navbar hoogte voor mobile */
+        @media (max-width: 767px) {
+            .navbar {
+                min-height: 60px; /* Minimum hoogte */
+            }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem; /* Minder padding op mobile */
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.8rem; /* Kleinere gap voor mobile */
+            flex-wrap: wrap; /* Belangrijk: wrap voor mobile */
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.75rem; /* Kleinere font voor mobile */
+            padding: 0.3rem 0.5rem; /* Padding voor betere touch targets */
+        }
+
+        .nav-link:hover, .nav-link:active {
+            color: var(--light-pink);
+        }
+
+        /* HERO SECTIE */
+        .hero {
+            min-height: 100vh; /* min-height ipv height voor mobile */
+            background: linear-gradient(135deg, var(--soft-yellow) 0%, var(--light-pink) 100%);
+            display: flex;
+            flex-direction: column; /* Column voor logo boven content */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--dark-blue);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px; /* Meer ruimte voor fixed nav op mobile */
+        }
+
+        /* Hero logo styling */
+        .hero-logo {
+            position: absolute;
+            top: 100px; /* Meer ruimte op mobile voor groter menu */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-logo {
+                top: 80px; /* Normale ruimte op tablet/desktop */
+            }
+        }
+
+        /* Animatie achtergrond */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,169,249,0.3) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-30%, -60%) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            padding-top: 160px; /* Extra ruimte voor logo op mobile */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* LOGO PLACEHOLDER - vervang door echte afbeelding */
+        .logo-placeholder {
+            font-size: 2.5rem; /* Kleiner op mobile */
+            color: var(--magenta);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 3rem; /* Kleiner op mobile */
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        .hero-date {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--magenta);
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: var(--dark-blue);
+            font-weight: 400;
+        }
+
+        /* PRIMAIRE KNOP STYLING */
+        .btn-primary {
+            background-color: var(--magenta);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(230, 31, 147, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 48, 96, 0.3);
+        }
+
+        /* SECTIE BASIS STYLING */
+        .section {
+            padding: 3rem 0; /* Minder padding op mobile */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem; /* Kleiner op mobile */
+            color: var(--dark-blue);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        /* Onderstreep effect bij titels */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--magenta);
+            border-radius: 2px;
+        }
+
+        .container {
+            padding: 0 1rem; /* Standaard padding voor mobile */
+        }
+
+        /* SAAM FESTIVAL SECTIE */
+        .festival {
+            background: linear-gradient(to bottom, var(--light-pink), var(--soft-yellow)); /* Vloeiende overgang */
+            position: relative;
+        }
+
+        .festival-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .festival-item {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 2px solid var(--light-pink);
+        }
+
+        .festival-item h3 {
+            color: var(--magenta);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .festival-item p {
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        .festival-item ul {
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        /* LINE-UP SECTIE */
+        .lineup {
+            background-color: var(--white);
+        }
+
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 kolom op mobile */
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .lineup-item {
+            background: linear-gradient(135deg, var(--light-pink) 0%, var(--soft-yellow) 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .lineup-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .lineup-time {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .lineup-event {
+            font-size: 1rem;
+            color: var(--dark-blue);
+            font-weight: 500;
+        }
+
+        /* LOCATIE SECTIE MET UITKLAPBARE ITEMS */
+        .location {
+            background-color: var(--light-pink);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* UITKLAPBARE LOCATIE ITEMS */
+        .location-item {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            touch-action: manipulation; /* Verbeter touch response */
+        }
+
+        .location-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            background-color: var(--white);
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            -webkit-tap-highlight-color: transparent; /* Verwijder highlight op mobile */
+            user-select: none; /* Voorkom text selectie */
+            touch-action: manipulation; /* Verbeter touch response */
+            position: relative; /* Voor betere touch target */
+            min-height: 44px; /* Minimum touch target size */
+        }
+
+        .location-header:hover, .location-header:active {
+            background-color: var(--soft-yellow);
+        }
+
+        .location-header h3 {
+            color: var(--dark-blue);
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Plus/min icoon */
+        .location-toggle {
+            font-size: 1.5rem;
+            color: var(--magenta);
+            transition: transform 0.3s ease;
+            /* pointer-events verwijderd voor mobile touch */
+        }
+
+        .location-item.active .location-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Uitklapbare content */
+        .location-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease; /* Langere animatie */
+            padding: 0 1.5rem;
+        }
+
+        .location-item.active .location-content {
+            max-height: 1500px; /* Verhoogd voor meer content */
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .location-content p {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        /* PLACEHOLDER VOOR AFBEELDINGEN IN LOCATIE */
+        .location-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            /* Vervang dit met: <img src="jullie-afbeelding.jpg" alt="beschrijving"> */
+        }
+
+        /* ANNOUNCEMENTS/CREDITS SECTIE */
+        .announcements {
+            background-color: var(--white);
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Altijd 1 kolom */
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* UITKLAPBARE CREDIT ITEMS */
+        .credit-item {
+            background-color: var(--soft-yellow);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent; /* Verwijder highlight op mobile */
+            user-select: none; /* Voorkom text selectie */
+            touch-action: manipulation; /* Verbeter touch response */
+        }
+
+        .credit-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            touch-action: manipulation; /* Verbeter touch response */
+            position: relative; /* Voor betere touch target */
+            min-height: 44px; /* Minimum touch target size */
+        }
+
+        .credit-item:hover, .credit-item:active {
+            background-color: var(--light-pink);
+        }
+
+        .credit-header h3 {
+            color: var(--magenta);
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .credit-toggle {
+            font-size: 1.3rem;
+            color: var(--dark-blue);
+            transition: transform 0.3s ease;
+            /* pointer-events verwijderd voor mobile touch */
+        }
+
+        .credit-item.active .credit-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Uitklapbare credit content */
+        .credit-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease; /* Langere animatie voor meer content */
+            padding: 0 1.5rem;
+        }
+
+        .credit-item.active .credit-content {
+            max-height: 3000px; /* Extra verhoogd voor Getuigen sectie */
+            padding: 0 1.5rem 1.5rem;
+            overflow-y: auto; /* Scroll toevoegen voor zeer lange content */
+        }
+
+        .credit-content p {
+            color: var(--dark-blue);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* PLACEHOLDER VOOR FOTO'S IN CREDITS */
+        .credit-image {
+            width: 100%;
+            height: 150px;
+            background-color: var(--white);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            font-size: 0.8rem;
+        }
+
+        /* CADEAUS SECTIE */
+        .gifts {
+            background-color: var(--soft-yellow);
+        }
+
+        .gifts-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .gifts-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        /* Q&A SECTIE */
+        .qa {
+            background-color: var(--white);
+        }
+
+        .qa-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .qa-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background-color: var(--light-pink);
+            border-radius: 15px;
+        }
+
+        .qa-question {
+            font-size: 1.1rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .qa-answer {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* RSVP SECTIE */
+        .rsvp {
+            background-color: var(--light-pink);
+        }
+
+        .rsvp-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .rsvp-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--dark-gray);
+        }
+
+        .rsvp-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid var(--soft-yellow);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif; /* Vervang door 'Trend Sans Four' */
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--magenta);
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--soft-yellow);
+            font-family: 'The Seasons', serif;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* TABLET STYLES (768px en groter) */
+        @media (min-width: 768px) {
+            /* Navigatie aanpassingen voor tablet */
+            .navbar {
+                padding: 1rem 0;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+            }
+
+            /* Hero aanpassingen */
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero-date {
+                font-size: 2rem;
+            }
+
+            .logo-placeholder {
+                font-size: 3rem;
+            }
+            
+            .hero-content {
+                padding-top: 180px; /* Meer ruimte voor logo op tablet */
+            }
+
+            /* Secties */
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 3rem;
+                margin-bottom: 3rem;
+            }
+
+            /* Grid layouts voor tablet */
+            .lineup-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .location-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Credits blijft 1 kolom voor leesbaarheid */
+
+            /* Grotere padding voor items */
+            .festival-item {
+                padding: 2.5rem;
+            }
+
+            .qa-item {
+                padding: 2rem;
+            }
+        }
+
+        /* Mobile specifieke aanpassingen */
+        @media (max-width: 767px) {
+            .hero {
+                padding-top: 100px; /* Ruimte voor fixed nav op mobile */
+            }
+            
+            .hero-logo {
+                top: 110px; /* Extra ruimte voor uitgebreid menu */
+            }
+            
+            .hero-content {
+                padding-top: 180px; /* Aangepast voor logo positie */
+            }
+        }
+
+        /* DESKTOP STYLES (1024px en groter) */
+        @media (min-width: 1024px) {
+            /* Navigatie voor desktop */
+            .nav-container {
+                padding: 0 2rem;
+            }
+
+            .nav-menu {
+                gap: 2rem;
+                flex-wrap: nowrap; /* Geen wrap op desktop */
+            }
+
+            /* Hero voor desktop */
+            .hero h1 {
+                font-size: 5rem;
+            }
+
+            .btn-primary {
+                padding: 1.2rem 3rem;
+                font-size: 1.1rem;
+            }
+            
+            .hero-content {
+                padding-top: 200px; /* Nog meer ruimte voor logo op desktop */
+            }
+
+            /* Secties voor desktop */
+            .section {
+                padding: 5rem 0;
+            }
+
+            .container {
+                padding: 0 2rem;
+            }
+
+            /* Grid layouts voor desktop */
+            .lineup-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            /* Credits blijft 1 kolom voor leesbaarheid */
+
+            /* Grotere afbeeldingen op desktop */
+            .location-image {
+                height: 250px;
+            }
+
+            .credit-image {
+                height: 200px;
+            }
+        }
+
+        /* JavaScript functies voor uitklapbare elementen */
+        /* Deze worden toegevoegd aan het einde van de HTML */
+    </style>
+</head>
+
+
+<body>
+
+<div id="pw-protect" style="position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:white;display:flex;align-items:center;justify-content:center;">
+  <form id="pw-form" style="background:#fff7ad;padding:2rem;border-radius:1rem;box-shadow:0 2px 12px #ccc;text-align:center;">
+    <label for="pw-input" style="font-weight:bold;">Wachtwoord:</label>
+    <br>
+    <input type="password" id="pw-input" required style="padding:0.5rem;margin:1rem 0;border-radius:5px;border:1px solid #e61f93;">
+    <br>
+    <button type="submit" style="background:#e61f93;color:white;padding:0.5rem 1.5rem;border:none;border-radius:50px;font-weight:bold;cursor:pointer;">Enter</button>
+    <div id="pw-error" style="color:red;margin-top:1rem;"></div>
+  </form>
+</div>
+
+    <!-- NAVIGATIE MENU -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#festival" class="nav-link">SAAM Festival</a></li>
+                <li><a href="#lineup" class="nav-link">Line-up</a></li>
+                <li><a href="#location" class="nav-link">Locatie</a></li>
+                <li><a href="#announcements" class="nav-link">Credits</a></li>
+                <li><a href="#gifts" class="nav-link">Cadeaus</a></li>
+                <li><a href="#qa" class="nav-link">FAQs</a></li>
+                <li><a href="#rsvp" class="nav-link">RSVP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO/HOME SECTIE -->
+    <section id="home" class="hero">
+        <!-- LOGO DIRECT ONDER MENU -->
+        <div class="hero-logo">
+            <!-- PLACEHOLDER: Vervang dit met jullie logo -->
+            <img src="Images\SAAM LOGO-2.png" alt="SAAM Festival Logo">
+                
+
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <!-- SAAM FESTIVAL TEKST -->
+           <!-- <div class="logo-placeholder">SAAM FESTIVAL</div> -->
+            
+            <!-- Namen van het bruidspaar -->
+            <h1 class="couple-names">Janske & Tian</h1>
+            
+            <!-- Trouwdatum -->
+            <p class="hero-date">18 JULI 2026</p>
+            
+            <!-- Subtitel -->
+            <p class="hero-subtitle">Hou de website in de gaten voor updates</p>
+            
+            <!-- RSVP knop -->
+            <a href="#rsvp" class="btn-primary">RSVP</a>
+        </div>
+    </section>
+
+    <!-- SAAM FESTIVAL SECTIE -->
+    <section id="festival" class="section festival">
+        <div class="container">
+            <h2 class="section-title">SAAM Festival</h2>
+            <div class="festival-content">
+                <!-- Introductie -->
+                <div class="festival-item">
+                    <h3>Introductie</h3>
+                    <p>Welkom op de website van SAAM Festival! Wij zeggen JA! tegen elkaar én tegen een onvergetelijke dag met jullie allemaal. Liefde vieren we het liefst groots; met hitjes, dansjes, heerlijk eten, en een zonsondergang aan de Maas die je niet snel zult vergeten.</p>
+                    <p>Op deze website vind je alles wat je nodig hebt voor een onvergetelijke dag, vol praktische info, de laatste updates en vooral veel voorpret. Check hem dus nu en zeker nog een keer van te voren! Wij kunnen niet wachten om dit avontuur samen met jullie te beleven.</p>
+                    <p>Liefs,<br>Janske & Tian</p>
+                </div>
+                
+                <!-- Kamperen -->
+                <div class="festival-item">
+                    <h3>Kamperen</h3>
+                    <p>Voor de echte festivalervaring is er de mogelijkheid om te kamperen! Sterker nog: dit vinden we heel erg leuk, dan duurt het genieten voor ons weer een dag langer! Neem je tent mee en blijf slapen onder de sterren. De volgende ochtend strijden we samen tegen onze kater met een brak ontbijt en een duik in de Maas.</p>
+                    <p>Wil je liever niet kamperen, maar wel in de buurt overnachten? In Maren-Kessel vind je ook een hotel en een B&B:</p>
+                    <ul style="list-style: disc; margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>Hotel Brasserie Oud Maren (6 minuten lopen naar locatie)</li>
+                        <li>Bed and Breakfast Bella Rose, voor maximaal 4 personen (5 minuten lopen naar locatie)</li>
+                    </ul>
+                </div>
+                
+                <!-- Dresscode -->
+                <div class="festival-item">
+                    <h3>Dresscode</h3>
+                    <p>Festival chique! Trek je mooiste festivaloutfit aan: kleurrijk, comfortabel en vooral lekker dansbaar. Het terrein bestaat uit zand, klei en een stukje reliëf; trek dus zeker geen hakken aan! Met cowboylaarzen scoor je punten bij Janske en Tian vindt chique op sneakers ook een mooie slogan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LINE-UP SECTIE -->
+    <section id="lineup" class="section lineup">
+        <div class="container">
+            <h2 class="section-title">Line-up</h2>
+            <div class="lineup-grid">
+                <div class="lineup-item">
+                    <div class="lineup-time">13:00</div>
+                    <div class="lineup-event">Arrivee</div>
+                </div>
+                <div class="lineup-item">
+                    <div class="lineup-time">13:30</div>
+                    <div class="lineup-event">Start Ceremonie</div>
+                </div>
+                <div class="lineup-item">
+                    <div class="lineup-time">15:00</div>
+                    <div class="lineup-event">Start Festival</div>
+                </div>
+                <div class="lineup-item">
+                    <div class="lineup-time">00:00</div>
+                    <div class="lineup-event">Laatste Nummer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIE SECTIE MET UITKLAPBARE ITEMS -->
+    <section id="location" class="section location">
+        <div class="container">
+            <h2 class="section-title">Locatie</h2>
+            <div class="location-grid">
+                <!-- Parkeren uitklapbaar -->
+                <div class="location-item">
+                    <div class="location-header">
+                        <h3>Parkeren</h3>
+                        <span class="location-toggle">+</span>
+                    </div>
+                    <div class="location-content">
+                        <p>Op de Marense Dijk zelf zijn parkeermogelijkheden en op een nabijgelegen pad. In de overzichtskaart vind je hier de exacte locatie van.</p>
+                        <!-- <div class="location-image">[Parkeer kaart afbeelding]</div> -->
+                    </div>
+                </div>
+                
+                <!-- Overzichtskaart uitklapbaar -->
+                <div class="location-item">
+                    <div class="location-header">
+                        <h3>Overzichtskaart</h3>
+                        <span class="location-toggle">+</span>
+                    </div>
+                    <div class="location-content">
+                        <p>[Hier komt de overzichtskaart met festivalterrein]</p>
+                        <!-- <div class="location-image">[Plattegrond festivalterrein]</div> -->
+                    </div>
+                </div>
+                
+                <!-- OV uitklapbaar -->
+                <div class="location-item">
+                    <div class="location-header">
+                        <h3>OV</h3>
+                        <span class="location-toggle">+</span>
+                    </div>
+                    <div class="location-content">
+                        <p>De locatie is prachtig, maar moeilijk te bereiken met het OV. Hierbij de beste opties:</p>
+                        <ul style="list-style: disc; margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Trein naar Rosmalen Station, OV fiets naar locatie. Dit is ca. 30 minuten fietsen.</li>
+                            <li>Trein naar Zaltbommel Station, OV fiets naar locatie. Dit is ca. 35 minuten fietsen.</li>
+                            <li>Trein naar Den Bosch -, Rosmalen - of Zaltbommel Station en taxi/Uber naar locatie.</li>
+                        </ul>
+                        <!-- <div class="location-image">[Kaart OV route]</div> -->
+                    </div>
+                </div>
+                
+                <!-- Hotel uitklapbaar -->
+                <div class="location-item">
+                    <div class="location-header">
+                        <h3>Hotel</h3>
+                        <span class="location-toggle">+</span>
+                    </div>
+                    <div class="location-content">
+                        <p>Voor wie liever niet kampeert maar wel in de buurt wil overnachten:</p>
+                        <ul style="list-style: disc; margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Hotel Brasserie Oud Maren (6 minuten lopen naar locatie)</li>
+                            <li>Bed and Breakfast Bella Rose, voor maximaal 4 personen (5 minuten lopen naar locatie)</li>
+                        </ul>
+                        <!-- <div class="location-image">[Hotel informatie]</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREDITS SECTIE MET UITKLAPBARE CREDITS -->
+<section id="announcements" class="section announcements">
+    <div class="container">
+        <h2 class="section-title">Credits</h2>
+        <div class="credits-grid">
+            <div class="credit-item">
+                <div class="credit-header">
+                    <h3>Crew</h3>
+                    <span class="credit-toggle">+</span>
+                </div>
+                <div class="credit-content">
+                    <p><strong>Fleur</strong></p>
+                    <p>Als je tijdens het festival om je heen kijkt en denkt: "wauw, wat is dit leuk aangekleed", kijk dan vooral even naar onze stylingqueen Fleur! Want zeg je styling, dan zeg je Fleur. Met haar oog voor detail en passie voor kleur maakt ze van alles iets fleurigs. Maar Fleur is meer dan alleen styling: ze brengt mensen samen en is altijd op en top attent. Sterker nog, zonder haar daadkrachtige woorden in 2016 was er misschien niet eens een bruiloft geweest… Met een welgemikt duwtje in de rug zorgde ze namelijk voor de allereerste date van Janske en Tian, en de rest is geschiedenis. Datzelfde duwtje geeft ze ons nu bij de organisatie van dit festival, en wij zijn onwijs blij dat Fleur deel uitmaakt van onze festival crew!</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Michelle</strong></p>
+                    <p>Michelle is een echte creatieveling en verlaat haar huis nooit zonder een tas vol stiften, boekjes, prittstiften en fineliners. Zonder dat je er een muntje in hoeft te gooien, verrast ze je met de meest out-of-the-box ideeën en zet ze menig hersenpan in de marinade. Ze weet Janske altijd te prikkelen om anders te denken, wat ooit bijna leidde tot een best-seller borrelplank. Dat concept haalde het nét niet, maar gelukkig biedt dit festival nieuwe kansen. Daarnaast is Michelle een ware duizendpoot, met bakken ervaring. Niet alleen professioneel, maar ook als organisator van haar eigen jaarlijkse festival in de Achterhoek. Daar maken de dogs nu plaats voor een bruidspaar, en de glitters kan ze gelukkig gewoon hergebruiken. Haar aanstekelijke enthousiasme en creatieve brein maken haar tot een fantastische aanvulling!</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Maartje</strong></p>
+                    <p>Met Maartje is het altijd feest: keten, lachen en vooral losgaan. Ze weet als geen ander hoe je een borrel moet aangieren en zodra ze de muziek in handen krijgt, ben je verzekerd van urenlang certified bangers. Een feestje is pas écht compleet na minimaal twee keer Love Story van Taylor Swift, en het gaat pas goed los als haar vrolijke hupdansje voorbij komt. Janske en Maartje delen een middelbare school (al wisten ze dat toen zelf niet), een jaarclub én een hockeyteam. En naast al dat moois heeft Maartje nog een absolute superkracht: haar gigantische borrelplanken. Daarmee verrast ze iedereen en maakt ze van iedere borrel een smakelijk feestje. Wij kijken er enorm naar uit om Maartje’s energie, creativiteit en borrelplank-magic terug te zien bij onze festival crew!</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Cas</strong></p>
+                    <p>Je hebt werkpaarden en sierpaarden en er is heel weinig sierlijks aan dit paard. Cas was waarschijnlijk blij om te horen dat hij er een project bij kon gaan doen bovenop zijn onderneming (red. bikeflip: want kinderen groeien en fietsen niet #sluikreclame). Want ja er zitten toch 24 uur in een dag! Als je deze werkmentaliteit combineert met zijn extreem billige creativiteit dan weet je dat je kunt rekenen op een wonder van de action. Precies wat we zoeken! Deze hulp is echter niet vanzelfsprekend. Daarvoor moet je tenminste traangas hebben ingeademd in Nicaragua, een standbeeld hebben opgehaald in Lelystad en een bloedzuiger op je voet hebben getrotseerd omdat je de hike op slippers dacht te kunnen doen.</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Paul</strong></p>
+                    <p>Paul is een reiziger. Ook over land, maar vooral in zijn hoofd. Hij reist dan naar plekken waar bijna niemand komt; van vraagstukken over kwallen tot sterke businessmodellen. Een soort orakel voor out-of-the-boxideeen. Laat je dus niet misleiden door zijn Goofy-motoriek, deze man is misschien wel het brein achter je volgende avontuur. Want avonturen hebben Paul en Tian velen beleefd. In de kano, waar zij niet leerden vissen. In de schwebebaan, die een paar stops te lang bleek. Op het voetbalveld, waar een elftal Georgische beren ons deed twijfelen aan onze plannen. In de redactie van het taxibedrijf Zaïre, wat een unaniem groot succes was. Wij hebben Paul zijn brein weten te strikken om een tijdje rond te dobberen in het SAAM-festivalmeer. Dat gaat ongetwijfeld leiden tot nieuwe avonturen, wij kijken ernaar uit!</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Olmo</strong></p>
+                    <p>Dit onderdeel van de festivalcrew heeft zó veel kennis in huis op het gebied van feestjes dat het gek zou zijn om er geen gebruik van te maken. Zo leerde hij Tian dat je Schultenbrau eigenlijk niet onder de 25 graden Celsius mag drinken, en dat je hem het beste op drinktemperatuur krijgt op de verwarming. Dat leerde hij bij moeilijke vakken als geothermie, die Tian niet koos omdat ze teveel moeite kostten. Het blijft niet bij kennis. In principe kun je Olmo uitdagen voor iedere kroegsport en verwachten dat je pakkie krijgt. Maar veel belangrijker: Olmo is de gezelligste vent die je gaat vinden. Geen mens die hem niet mag. En wij mogen hem zelfs heel veel! Wat een geluk dat we op hem kunnen rekenen.</p>
+                    <div class="credit-image">[Foto crew]</div>
+                </div>
+            </div>
+                
+                <!-- Getuigen uitklapbaar -->
+                <div class="credit-item">
+                    <div class="credit-header">
+                        <h3>Getuigen</h3>
+                        <span class="credit-toggle">+</span>
+                    </div>
+                    <div class="credit-content">
+                        <p><strong>Puck</strong></p>
+                        <p>Vanaf de peuterspeelzaal zijn Puck en Janske al onafscheidelijke vriendinnen. Ze begonnen hun levens met hetzelfde geboortekaartje, deelden talloze logeerpartijtjes en 'afspreeks', en zagen de basisschooltijd voorbijvliegen met zelfverzonnen musicals en ontelbare Sims-sessies. (Al lag het echte Sims-talent bij Puck, terwijl Janske vanaf de zolder nieuwsgierig over haar schouder meekeek.)</p>
+                        <p>Daarna volgde een soms rumoerige middelbare schooltijd, met scheikunde als lievelingsvak, en later studeerden ze allebei in een andere stad. Toch zijn ze elkaar nooit uit het hart verloren. Daarom vinden wij het fantastisch dat Puck nu aan Janskes zijde staat als getuige!</p>
+                        
+                        <p style="margin-top: 1.5rem;"><strong>Annelies</strong></p>
+                        <p>Toen Annelies al helemaal was ingeleid in het studentenleven, kwam ook Janske om de hoek kijken: een onwetend 17-jarig meisje dat haar intrek nam in studentenhuis LB9. De vriendschap begon rustig; een beetje de kat uit de boom kijken en samen af en toe een bezoekje aan de piercingshop, maar ontvlamde echt toen Annelies Janske opbelde met de vraag of ze meeging naar Egypte. Want als Annelies iets in haar hoofd heeft, is er geen weg meer terug… en dus zei Janske 'ja'. Vanaf dat moment delen ze lief en leed, struinen ze samen kringloopjes en de Lidl af, en kunnen ze volledig zichzelf zijn bij elkaar. Annelies is zonder twijfel een fantastische getuige. En op een wilde avond? Dan tovert ze haar legendarische krekeldans tevoorschijn… dan weet je dat het een héle goede avond wordt!</p>
+                        
+                        <p style="margin-top: 1.5rem;"><strong>Guido</strong></p>
+                        <p>Guido is getuige van Tian. Ze ontmoetten elkaar in de lift van het Buys Ballotgebouw toen ze allebei te laat waren voor college. Kort daarop besloten ze samen te gaan wonen zodat ze zich minder slecht voelden wanneer ze die colleges skipten ('dan kun je ook niet te laat komen') en in plaats daarvan een krat bier te halen in badjas. Per persoon natuurlijk, zodat ze voor elke Mariokartbaan een pilsje hadden.</p>
+                        <p>Guido's bezit een uitzonderlijk talent voor het bekende wielrennen en het minder bekende aanspoelertje. Bij beide sporten kan het gebeuren dat hij sneuvelt, maar hij krabbelt altijd weer op om zijn beste versie van Rasputin voor je te zingen. Verder heeft hij niets met patriarchen of civetkatten.</p>
+                        <p>Huisgenoten, studiegenoten, clubgenoten, dispuutsgenoten, fietsgenoten, vakantiegenoten. Veel genoten! En dus genieten we dat hij zijn handtekening zal zetten.</p>
+                        
+                        <p style="margin-top: 1.5rem;"><strong>Loni</strong></p>
+                        <p>Tian en zijn zussen hebben vroeger ongeveer vijftig keer de wereld gered vanaf hun halfhoogslaper c.q. driemaster c.q. bunker, meestal nog voor het avondeten waar zij brood met spinnen aten (geen dank hoor!) Er kwamen vele illustere antagonisten voorbij als Randy en Björn, maar te voet of te skelter kwam het altijd weer goed. Later toen de fantasie niet toereikend genoeg was om voor wereldvrede te gaan, versloegen zij met gemak bananenshots en golfkarren.</p>
+                        <p>Voor een groot deel van bovenstaande kunnen maar enkelen getuigen. Loni is er daar een van, en binnenkort komt daar nog een getuigenis bij!</p>
+                        <!-- <div class="credit-image">[Foto getuigen]</div> -->
+                    </div>
+                </div>
+                
+                <!-- Webdesigner uitklapbaar -->
+                <div class="credit-item">
+                    <div class="credit-header">
+                        <h3>Webdesigner</h3>
+                        <span class="credit-toggle">+</span>
+                    </div>
+                    <div class="credit-content">
+                        <p>[Naam webdesigner]</p>
+                        <p>[Leuke tekst over webdesigner]</p>
+                        <div class="credit-image">[Foto webdesigner]</div>
+                    </div>
+                </div>
+                
+                <!-- DJs uitklapbaar -->
+                <div class="credit-item">
+                    <div class="credit-header">
+                        <h3>DJs</h3>
+                        <span class="credit-toggle">+</span>
+                    </div>
+                    <div class="credit-content">
+                        <p><strong>To Be Announced: stay connected!</strong></p>
+                        <!-- <div class="credit-image">[Foto DJs]</div> -->
+                    </div>
+                </div>
+                
+                <!-- Webdesigner uitklapbaar -->
+                <div class="credit-item" onclick="toggleCredit(this)">
+                    <div class="credit-header">
+                        <h3>Webdesigner</h3>
+                        <span class="credit-toggle">+</span>
+                    </div>
+                    <div class="credit-content">
+                        <p><strong>Simon</strong></p>
+                        <p>Ze zeggen dat je in het donker beter leert kijken. Misschien is dat wel de reden dat Simon alles op z'n mooist ziet. Hij weet van een weiland een speeltuin te maken en altijd de goede eigenschappen naar boven te laten drijven. Als geheime wapen hiervoor heeft hij natuurlijk zijn niet aflatende glimlach en een onbenut talent als poëet.</p>
+                        <p>Simon staat voor je klaar als je dat vraagt, en ook als je dat niet vraagt. Deze website stond al in elkaar voordat we het verzoek hadden gedaan, dankbaar!</p>
+                        <!-- <div class="credit-image">[Foto Simon]</div> -->
+                    </div>
+                </div>
+                
+                <!-- BABS uitklapbaar -->
+                <div class="credit-item" onclick="toggleCredit(this)">
+                    <div class="credit-header">
+                        <h3>BABS</h3>
+                        <span class="credit-toggle">+</span>
+                    </div>
+                    <div class="credit-content">
+                        <p><strong>Teun van der Ven</strong></p>
+                        <p>Met zijn jarenlang opgebouwde kennis over de bruid en bruidegom is Teun van der Ven de perfecte BABS. Zijn talenten reiken ver: van Roller Coaster Typhoon- en Runescape-master tot absolute expert in "Janske inbouwen met K'NEX". Maar ook buiten de spellen en bouwsels heeft hij bijzondere kwaliteiten, want in zijn werk houdt Teun zich bezig met het voorspellen van de toekomst. En laten we eerlijk zijn: dat komt als BABS natuurlijk heel goed van pas. Je trouwt tenslotte alleen twee mensen als er ook enig toekomstperspectief in zit!</p>
+                        <p>Tijdens zijn studententijd heeft Teun bovendien bakken ervaring opgedaan in spreken voor publiek. Teun wist altijd met humor, warmte en een vleugje eigenzinnigheid zijn publiek mee te nemen. Precies die kwaliteiten zorgen ervoor dat wij niet alleen vol vertrouwen zijn dat hij ons verhaal prachtig zal vertellen, maar ook dat hij de ceremonie een unieke, persoonlijke en onvergetelijke sfeer zal geven.</p>
+                        <p>Wij zijn ontzettend blij dat Teun ons gaat trouwen en kijken enorm uit naar zijn woorden en zijn verhaal op onze grote dag!</p>
+                        <!-- <div class="credit-image">[Foto Teun]</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CADEAUS SECTIE -->
+    <section id="gifts" class="section gifts">
+        <div class="container">
+            <h2 class="section-title">Cadeaus</h2>
+            <div class="gifts-content">
+                <p class="gifts-text">Jullie aanwezigheid op ons festival is het mooiste cadeau! Mochten jullie toch iets willen geven, dan laten wij ons graag verrassen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A/FAQs SECTIE -->
+    <section id="qa" class="section qa">
+        <div class="container">
+            <h2 class="section-title">FAQs</h2>
+            <div class="qa-content">
+                <div class="qa-item">
+                    <h3 class="qa-question">Ik lust alleen Schultenbrau; mag ik dat zelf meenemen?</h3>
+                    <p class="qa-answer">Ja dat mag! Echter wel alleen als de blikken 25 graden of meer zijn. U bent zelf verantwoordelijk voor de meting.</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Ik heb slechte ervaringen met plastic in mijn eten (panchetta met name). Zal het eten plasticvrij zijn?</h3>
+                    <p class="qa-answer">Geen zorgen! Met chirurgische precisie zal dit worden vermeden.</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Mag ik mijn hamster meenemen?</h3>
+                    <p class="qa-answer">Dat is ongebruikelijk, maar mag wel! Advies om uit te kijken voor mensen met appelstroop.</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Ik heb toevallig een poncho van werk die ik wil gebruiken als tent. Mag ik een ligsleuf graven?</h3>
+                    <p class="qa-answer">Dit is niet toegestaan. U slaapt in de uiterwaarde van de Maas en ligsleuven kunnen leiden tot bodemdegradatie.</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Zal er een quiz worden gehouden over welk nummer bij welke camping hoort?</h3>
+                    <p class="qa-answer">Nee dit is al eens gedaan.</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Zijn alle systemen ISO-gecertificeerd?</h3>
+                    <p class="qa-answer">Nee waarschijnlijk niet.</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Is het humanitair oorlogsrecht van toepassing?</h3>
+                    <p class="qa-answer">Laten we het leuk houden!</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Mag ik vissen tijdens de ceremonie?</h3>
+                    <p class="qa-answer">Liever niet!</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Mag ik het bruidspaar icen?</h3>
+                    <p class="qa-answer">Oeh leuk idee, maar niet zonder enig risico! De bruidegom kan hier vast om lachen en doet vrolijk mee, de bruid stuurt je gemoedelijk het terrein af.</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Ik heb een talent en wil dit graag op het podium laten zien, mag dit?</h3>
+                    <p class="qa-answer">Uiteraard! Pak je podium en verras ons!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP SECTIE -->
+    <section id="rsvp" class="section rsvp">
+        <div class="container">
+            <h2 class="section-title">RSVP</h2>
+            <div class="rsvp-content">
+                <p class="rsvp-text">We kunnen niet wachten om dit festival met jullie te vieren! Laat ons weten of je erbij bent.</p>
+                
+                <!-- RSVP FORMULIER -->
+<form id="rsvpForm">
+  <input type="text" id="naam" name="naam" placeholder="Naam" required>
+  <input type="email" id="email" name="email" placeholder="E-mail" required>
+  <select id="aanwezigheid" name="aanwezigheid" required>
+    <option value="">Aanwezig?</option>
+    <option value="Ja">Ja</option>
+    <option value="Nee">Nee</option>
+  </select>
+  <select id="aantal" name="aantal" required>
+    <option value="">Aantal personen</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+  </select>
+  <select id="kamperen" name="kamperen" required>
+    <option value="">Kamperen?</option>
+    <option value="Ja">Ja</option>
+    <option value="Nee">Nee</option>
+  </select>
+  <textarea id="opmerkingen" name="opmerkingen" placeholder="Opmerkingen"></textarea>
+  <button type="submit">Verstuur RSVP</button>
+</form>
+<div id="rsvp-resultaat"></div>
+                
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>SAAM Festival 2026</h3>
+            <p>18 Juli 2026</p>
+            <p>Janske & Tian</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT VOOR UITKLAPBARE ELEMENTEN -->
+    <script>
+        // Functie voor locatie items uitklappen
+        function toggleLocation(element) {
+            const locationItem = element.parentElement;
+            // Sluit andere open items
+            document.querySelectorAll('.location-item').forEach(item => {
+                if (item !== locationItem) {
+                    item.classList.remove('active');
+                }
+            });
+            // Toggle huidige item
+            locationItem.classList.toggle('active');
+        }
+
+        // Functie voor credit items uitklappen
+        function toggleCredit(element) {
+            // Sluit andere open items
+            document.querySelectorAll('.credit-item').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            // Toggle huidige item
+            element.classList.toggle('active');
+        }
+
+        // Extra event listeners voor mobile - gebruik event delegation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Voorkom dubbele clicks door deze flag
+            let isAnimating = false;
+            
+            // Voor locatie headers
+            document.querySelectorAll('.location-header').forEach(header => {
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    if (!isAnimating) {
+                        isAnimating = true;
+                        toggleLocation(this);
+                        setTimeout(() => { isAnimating = false; }, 500);
+                    }
+                });
+            });
+
+            // Voor credit items
+            document.querySelectorAll('.credit-item').forEach(item => {
+                const header = item.querySelector('.credit-header');
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    if (!isAnimating) {
+                        isAnimating = true;
+                        toggleCredit(item);
+                        setTimeout(() => { isAnimating = false; }, 500);
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll voor anker links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Extra offset voor fixed navbar
+                    const navHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+<script>
+document.getElementById("rsvpForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  
+  document.getElementById("rsvp-resultaat").innerText = "Versturen...";
+  
+  // Je deployment URL
+  const endpoint = "https://script.google.com/macros/s/AKfycbw0p-GcPErLFrOS1BBZ6zDbOkpvnuavNeCgUuBDweeiL0CuJCjli6_qtGcohEue1259/exec";
+  
+  const formData = new FormData();
+  formData.append("naam", document.getElementById("naam").value);
+  formData.append("email", document.getElementById("email").value);
+  formData.append("aanwezigheid", document.getElementById("aanwezigheid").value);
+  formData.append("aantal", document.getElementById("aantal").value);
+  formData.append("kamperen", document.getElementById("kamperen").value);
+  formData.append("opmerkingen", document.getElementById("opmerkingen").value || " ");
+  
+  fetch(endpoint, {
+    method: "POST",
+    body: formData
+  })
+  .then(() => {
+    document.getElementById("rsvp-resultaat").innerHTML = 
+      "<span style='color: #e61f93; font-weight: bold;'>✓ RSVP ontvangen!</span>";
+    document.getElementById("rsvpForm").reset();
+  })
+  .catch(() => {
+    document.getElementById("rsvp-resultaat").innerHTML = 
+      "<span style='color: red;'>Er ging iets mis. Probeer het opnieuw.</span>";
+  });
+});
+</script>
+
+<script>
+const CORRECT_PW = "tian"; // Kies zelf een wachtwoord
+document.getElementById("pw-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  const input = document.getElementById("pw-input").value;
+  if(input === CORRECT_PW){
+    document.getElementById("pw-protect").style.display = "none";
+    document.body.style.overflow = "";
+  } else {
+    document.getElementById("pw-error").innerText = "Wachtwoord onjuist!";
+    document.getElementById("pw-input").value = "";
+  }
+});
+window.onload = function() {
+  document.body.style.overflow = "hidden";
+  document.getElementById("pw-input").focus();
+};
+</script>
+
+
+</body>
+
+</html>
