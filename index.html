@@ -212,6 +212,15 @@
     /* ... de rest van je desktop styles ... */
 }
 
+/* STYLING VOOR CADEAU AFBEELDING */
+.gift-image {
+    display: block;
+    margin: 2rem auto 0; /* 2rem marge boven, auto links/rechts voor centreren, 0 onder */
+    max-width: 120px;    /* Een mooie grootte, pas aan indien nodig */
+    height: auto;        /* Behoudt de aspect ratio */
+}
+
+        
         .hero h1 {
             font-size: 3rem; /* Kleiner op mobile */
             margin-bottom: 1rem;
@@ -1115,15 +1124,19 @@
         </div>
     </section>
 
-    <!-- CADEAUS SECTIE -->
-    <section id="gifts" class="section gifts">
-        <div class="container">
-            <h2 class="section-title">Cadeaus</h2>
-            <div class="gifts-content">
-                <p class="gifts-text">Jullie aanwezigheid op ons festival is het mooiste cadeau! Mochten jullie toch iets willen geven, dan laten wij ons graag verrassen.</p>
-            </div>
+<!-- CADEAUS SECTIE -->
+<section id="gifts" class="section gifts">
+    <div class="container">
+        <h2 class="section-title">Cadeaus</h2>
+        <div class="gifts-content">
+            <p class="gifts-text">Jullie aanwezigheid op ons festival is het mooiste cadeau! Mochten jullie toch iets willen geven, dan laten wij ons graag verrassen.</p>
+            
+            <!-- HIER IS DE AFBEELDING TOEGEVOEGD -->
+            <img src="Images/kado.png" alt="Cadeau envelop" class="gift-image">
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Q&A/FAQs SECTIE -->
     <section id="qa" class="section qa">
@@ -1410,5 +1423,6 @@ window.onload = function() {
 </body>
 
 </html>
+
 
 
