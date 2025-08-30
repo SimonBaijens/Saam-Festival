@@ -1185,7 +1185,7 @@
                 <form id="rsvpForm">
                     <!-- Naam -->
                     <div class="form-group">
-                        <label for="naam">NAMENLSDJF</label>
+                        <label for="naam">NAAM</label>
                         <input type="text" id="naam" name="naam" placeholder=" " required>
                     </div>
                     
@@ -1369,13 +1369,22 @@ document.getElementById("pw-form").addEventListener("submit", function(e){
   e.preventDefault();
   const input = document.getElementById("pw-input").value;
   if(input === CORRECT_PW){
+    // Verberg het wachtwoordscherm
     document.getElementById("pw-protect").style.display = "none";
+    
+    // Sta scrollen op de body weer toe
     document.body.style.overflow = "";
+    
+    // DE TOEGEVOEGDE REGEL:
+    // Forceer de pagina om direct naar de top te scrollen (x=0, y=0)
+    window.scrollTo(0, 0);
+
   } else {
     document.getElementById("pw-error").innerText = "Wachtwoord onjuist!";
     document.getElementById("pw-input").value = "";
   }
 });
+
 window.onload = function() {
   document.body.style.overflow = "hidden";
   document.getElementById("pw-input").focus();
@@ -1401,4 +1410,5 @@ window.onload = function() {
 </body>
 
 </html>
+
 
