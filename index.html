@@ -116,6 +116,10 @@
             position: relative;
             overflow: hidden;
             padding-top: 100px; /* Meer ruimte voor fixed nav op mobile */
+
+            padding-top: 100px; /* Een standaard fallback waarde */
+           --nav-height: 60px; /* Een CSS variabele voor de navigatiehoogte */
+            padding-top: calc(var(--nav-height) + 40px); /* Berekent de padding dynamisch */
         }
 
         /* Hero logo styling */
@@ -1378,8 +1382,22 @@ window.onload = function() {
 };
 </script>
 
+<script>
+    function setHeroPadding() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            const navHeight = navbar.offsetHeight;
+            document.documentElement.style.setProperty('--nav-height', navHeight + 'px');
+        }
+    }
+
+    // Voer de functie uit bij het laden van de pagina
+    window.addEventListener('DOMContentLoaded', setHeroPadding);
+
+    // Voer de functie opnieuw uit als de venstergrootte verandert
+    window.addEventListener('resize', setHeroPadding);
+</script>
 
 </body>
 
 </html>
-
