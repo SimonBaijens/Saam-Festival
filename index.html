@@ -119,13 +119,24 @@
         }
 
         /* Hero logo styling */
-        .hero-logo {
+     /*   .hero-logo {
             position: absolute;
-            top: 100px; /* Meer ruimte op mobile voor groter menu */
+            top: 100px; 
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
-        }
+        } */
+            
+        
+.hero-logo {
+    position: absolute;
+    top: 100px;
+    left: 0;           /* Zet op 0 */
+    right: 0;          /* Zet op 0 */
+    transform: none;   /* Haal de oude transform weg */
+    padding: 0 1rem;   /* Voeg links en rechts 1rem padding toe */
+    z-index: 2;
+}
 
         @media (min-width: 768px) {
             .hero-logo {
@@ -156,13 +167,15 @@
             z-index: 1;
         }
 
-        /* LOGO STYLING - responsive voor alle schermformaten */
-        .hero-logo img {
-            max-width: 90%; /* Maximaal 90% van container breedte op mobile */
-            width: 250px; /* Standaard breedte */
-            height: auto; /* Behoud verhoudingen */
-            display: block;
-        }
+
+
+        /* Aangepaste code voor het logo */
+.hero-logo img {
+    max-width: 100%; /* Veranderd van 90% naar 100% */
+    width: 100%;     /* Veranderd van 250px naar 100% */
+    height: auto;    /* Behoud verhoudingen */
+    display: block;
+}
         
         @media (min-width: 768px) {
             .hero-logo img {
@@ -170,11 +183,30 @@
             }
         }
         
+
+
+        
+/* CORRECTE CODE OM TE GEBRUIKEN */
         @media (min-width: 1024px) {
-            .hero-logo img {
-                width: 400px; /* Nog groter op desktop */
-            }
-        }
+
+            /* De container (.hero-logo) wordt op desktop gecentreerd */
+            .hero-logo {
+             left: 50%;
+             transform: translateX(-50%);
+             padding: 0; /* Haal de mobiele padding weg */
+        
+                /* Deze zijn nodig om de mobiele 'left:0; right:0;' te overschrijven */
+             right: auto;
+                width: auto; 
+                        }
+
+                 /* De afbeelding (.hero-logo img) krijgt alleen een vaste breedte */
+                 .hero-logo img {
+                     width: 600px;
+    }
+
+    /* ... de rest van je desktop styles ... */
+}
 
         .hero h1 {
             font-size: 3rem; /* Kleiner op mobile */
@@ -571,24 +603,46 @@
             color: var(--dark-gray);
         }
 
-        #rsvpForm input,
-        #rsvpForm select,
-        #rsvpForm textarea {
+        .rsvp-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             padding: 0.8rem;
             border: 2px solid var(--soft-yellow);
             border-radius: 8px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif; /* Vervang door 'Trend Sans Four' */
             font-size: 1rem;
             transition: border-color 0.3s ease;
             background-color: var(--white);
         }
 
-        #rsvpForm input:focus,
-        #rsvpForm select:focus,
-        #rsvpForm textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--magenta);
-            background-color: var(--white);
         }
 
         #rsvpForm button[type="submit"] {
@@ -614,13 +668,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(44, 48, 96, 0.3);
         }
-
-        #rsvp-resultaat {
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
         /* FOOTER */
         .footer {
             background-color: var(--dark-blue);
@@ -963,33 +1010,23 @@
     <div class="container">
         <h2 class="section-title">Credits</h2>
         <div class="credits-grid">
-            <div class="credit-item">
-                <div class="credit-header">
-                    <h3>Crew</h3>
-                    <span class="credit-toggle">+</span>
-                </div>
-                <div class="credit-content">
-                    <p><strong>Fleur</strong></p>
-                    <p>Als je tijdens het festival om je heen kijkt en denkt: "wauw, wat is dit leuk aangekleed", kijk dan vooral even naar onze stylingqueen Fleur! Want zeg je styling, dan zeg je Fleur. Met haar oog voor detail en passie voor kleur maakt ze van alles iets fleurigs. Maar Fleur is meer dan alleen styling: ze brengt mensen samen en is altijd op en top attent. Sterker nog, zonder haar daadkrachtige woorden in 2016 was er misschien niet eens een bruiloft geweest… Met een welgemikt duwtje in de rug zorgde ze namelijk voor de allereerste date van Janske en Tian, en de rest is geschiedenis. Datzelfde duwtje geeft ze ons nu bij de organisatie van dit festival, en wij zijn onwijs blij dat Fleur deel uitmaakt van onze festival crew!</p>
-                    
-                    <p style="margin-top: 1.5rem;"><strong>Michelle</strong></p>
-                    <p>Michelle is een echte creatieveling en verlaat haar huis nooit zonder een tas vol stiften, boekjes, prittstiften en fineliners. Zonder dat je er een muntje in hoeft te gooien, verrast ze je met de meest out-of-the-box ideeën en zet ze menig hersenpan in de marinade. Ze weet Janske altijd te prikkelen om anders te denken, wat ooit bijna leidde tot een best-seller borrelplank. Dat concept haalde het nét niet, maar gelukkig biedt dit festival nieuwe kansen. Daarnaast is Michelle een ware duizendpoot, met bakken ervaring. Niet alleen professioneel, maar ook als organisator van haar eigen jaarlijkse festival in de Achterhoek. Daar maken de dogs nu plaats voor een bruidspaar, en de glitters kan ze gelukkig gewoon hergebruiken. Haar aanstekelijke enthousiasme en creatieve brein maken haar tot een fantastische aanvulling!</p>
-                    
-                    <p style="margin-top: 1.5rem;"><strong>Maartje</strong></p>
-                    <p>Met Maartje is het altijd feest: keten, lachen en vooral losgaan. Ze weet als geen ander hoe je een borrel moet aangieren en zodra ze de muziek in handen krijgt, ben je verzekerd van urenlang certified bangers. Een feestje is pas écht compleet na minimaal twee keer Love Story van Taylor Swift, en het gaat pas goed los als haar vrolijke hupdansje voorbij komt. Janske en Maartje delen een middelbare school (al wisten ze dat toen zelf niet), een jaarclub én een hockeyteam. En naast al dat moois heeft Maartje nog een absolute superkracht: haar gigantische borrelplanken. Daarmee verrast ze iedereen en maakt ze van iedere borrel een smakelijk feestje. Wij kijken er enorm naar uit om Maartje's energie, creativiteit en borrelplank-magic terug te zien bij onze festival crew!</p>
-                    
-                    <p style="margin-top: 1.5rem;"><strong>Cas</strong></p>
-                    <p>Je hebt werkpaarden en sierpaarden en er is heel weinig sierlijks aan dit paard. Cas was waarschijnlijk blij om te horen dat hij er een project bij kon gaan doen bovenop zijn onderneming (red. bikeflip: want kinderen groeien en fietsen niet #sluikreclame). Want ja er zitten toch 24 uur in een dag! Als je deze werkmentaliteit combineert met zijn extreem billige creativiteit dan weet je dat je kunt rekenen op een wonder van de action. Precies wat we zoeken! Deze hulp is echter niet vanzelfsprekend. Daarvoor moet je tenminste traangas hebben ingeademd in Nicaragua, een standbeeld hebben opgehaald in Lelystad en een bloedzuiger op je voet hebben getrotseerd omdat je de hike op slippers dacht te kunnen doen.</p>
-                    
-                    <p style="margin-top: 1.5rem;"><strong>Paul</strong></p>
-                    <p>Paul is een reiziger. Ook over land, maar vooral in zijn hoofd. Hij reist dan naar plekken waar bijna niemand komt; van vraagstukken over kwallen tot sterke businessmodellen. Een soort orakel voor out-of-the-boxideeen. Laat je dus niet misleiden door zijn Goofy-motoriek, deze man is misschien wel het brein achter je volgende avontuur. Want avonturen hebben Paul en Tian velen beleefd. In de kano, waar zij niet leerden vissen. In de schwebebaan, die een paar stops te lang bleek. Op het voetbalveld, waar een elftal Georgische beren ons deed twijfelen aan onze plannen. In de redactie van het taxibedrijf Zaïre, wat een unaniem groot succes was. Wij hebben Paul zijn brein weten te strikken om een tijdje rond te dobberen in het SAAM-festivalmeer. Dat gaat ongetwijfeld leiden tot nieuwe avonturen, wij kijken ernaar uit!</p>
-                    
-                    <p style="margin-top: 1.5rem;"><strong>Olmo</strong></p>
-                    <p>Dit onderdeel van de festivalcrew heeft zó veel kennis in huis op het gebied van feestjes dat het gek zou zijn om er geen gebruik van te maken. Zo leerde hij Tian dat je Schultenbrau eigenlijk niet onder de 25 graden Celsius mag drinken, en dat je hem het beste op drinktemperatuur krijgt op de verwarming. Dat leerde hij bij moeilijke vakken als geothermie, die Tian niet koos omdat ze teveel moeite kostten. Het blijft niet bij kennis. In principe kun je Olmo uitdagen voor iedere kroegsport en verwachten dat je pakkie krijgt. Maar veel belangrijker: Olmo is de gezelligste vent die je gaat vinden. Geen mens die hem niet mag. En wij mogen hem zelfs heel veel! Wat een geluk dat we op hem kunnen rekenen.</p>
-                    <div class="credit-image">[Foto crew]</div>
-                </div>
-            </div>
+           
                 
+ <!-- BABS uitklapbaar -->
+                <div class="credit-item" onclick="toggleCredit(this)">
+                    <div class="credit-header">
+                        <h3>BABS</h3>
+                        <span class="credit-toggle">+</span>
+                    </div>
+                    <div class="credit-content">
+                        <p><strong>Teun van der Ven</strong></p>
+                        <p>Met zijn jarenlang opgebouwde kennis over de bruid en bruidegom is Teun van der Ven de perfecte BABS. Zijn talenten reiken ver: van Roller Coaster Typhoon- en Runescape-master tot absolute expert in "Janske inbouwen met K'NEX". Maar ook buiten de spellen en bouwsels heeft hij bijzondere kwaliteiten, want in zijn werk houdt Teun zich bezig met het voorspellen van de toekomst. En laten we eerlijk zijn: dat komt als BABS natuurlijk heel goed van pas. Je trouwt tenslotte alleen twee mensen als er ook enig toekomstperspectief in zit!</p>
+                        <p>Tijdens zijn studententijd heeft Teun bovendien bakken ervaring opgedaan in spreken voor publiek. Teun wist altijd met humor, warmte en een vleugje eigenzinnigheid zijn publiek mee te nemen. Precies die kwaliteiten zorgen ervoor dat wij niet alleen vol vertrouwen zijn dat hij ons verhaal prachtig zal vertellen, maar ook dat hij de ceremonie een unieke, persoonlijke en onvergetelijke sfeer zal geven.</p>
+                        <p>Wij zijn ontzettend blij dat Teun ons gaat trouwen en kijken enorm uit naar zijn woorden en zijn verhaal op onze grote dag!</p>
+                        <!-- <div class="credit-image">[Foto Teun]</div> -->
+                    </div>
+                </div>
+
                 <!-- Getuigen uitklapbaar -->
                 <div class="credit-item">
                     <div class="credit-header">
@@ -1015,6 +1052,33 @@
                         <!-- <div class="credit-image">[Foto getuigen]</div> -->
                     </div>
                 </div>
+
+                 <div class="credit-item">
+                <div class="credit-header">
+                    <h3>Crew</h3>
+                    <span class="credit-toggle">+</span>
+                </div>
+                <div class="credit-content">
+                    <p><strong>Fleur</strong></p>
+                    <p>Als je tijdens het festival om je heen kijkt en denkt: "wauw, wat is dit leuk aangekleed", kijk dan vooral even naar onze stylingqueen Fleur! Want zeg je styling, dan zeg je Fleur. Met haar oog voor detail en passie voor kleur maakt ze van alles iets fleurigs. Maar Fleur is meer dan alleen styling: ze brengt mensen samen en is altijd op en top attent. Sterker nog, zonder haar daadkrachtige woorden in 2016 was er misschien niet eens een bruiloft geweest… Met een welgemikt duwtje in de rug zorgde ze namelijk voor de allereerste date van Janske en Tian, en de rest is geschiedenis. Datzelfde duwtje geeft ze ons nu bij de organisatie van dit festival, en wij zijn onwijs blij dat Fleur deel uitmaakt van onze festival crew!</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Michelle</strong></p>
+                    <p>Michelle is een echte creatieveling en verlaat haar huis nooit zonder een tas vol stiften, boekjes, prittstiften en fineliners. Zonder dat je er een muntje in hoeft te gooien, verrast ze je met de meest out-of-the-box ideeën en zet ze menig hersenpan in de marinade. Ze weet Janske altijd te prikkelen om anders te denken, wat ooit bijna leidde tot een best-seller borrelplank. Dat concept haalde het nét niet, maar gelukkig biedt dit festival nieuwe kansen. Daarnaast is Michelle een ware duizendpoot, met bakken ervaring. Niet alleen professioneel, maar ook als organisator van haar eigen jaarlijkse festival in de Achterhoek. Daar maken de dogs nu plaats voor een bruidspaar, en de glitters kan ze gelukkig gewoon hergebruiken. Haar aanstekelijke enthousiasme en creatieve brein maken haar tot een fantastische aanvulling!</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Maartje</strong></p>
+                    <p>Met Maartje is het altijd feest: keten, lachen en vooral losgaan. Ze weet als geen ander hoe je een borrel moet aangieren en zodra ze de muziek in handen krijgt, ben je verzekerd van urenlang certified bangers. Een feestje is pas écht compleet na minimaal twee keer Love Story van Taylor Swift, en het gaat pas goed los als haar vrolijke hupdansje voorbij komt. Janske en Maartje delen een middelbare school (al wisten ze dat toen zelf niet), een jaarclub én een hockeyteam. En naast al dat moois heeft Maartje nog een absolute superkracht: haar gigantische borrelplanken. Daarmee verrast ze iedereen en maakt ze van iedere borrel een smakelijk feestje. Wij kijken er enorm naar uit om Maartje's energie, creativiteit en borrelplank-magic terug te zien bij onze festival crew!</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Cas</strong></p>
+                    <p>Je hebt werkpaarden en sierpaarden en er is heel weinig sierlijks aan dit paard. Cas was waarschijnlijk blij om te horen dat hij er een project bij kon gaan doen bovenop zijn onderneming (red. bikeflip: want kinderen groeien en fietsen niet #sluikreclame). Want ja er zitten toch 24 uur in een dag! Als je deze werkmentaliteit combineert met zijn extreem billige creativiteit dan weet je dat je kunt rekenen op een wonder van de action. Precies wat we zoeken! Deze hulp is echter niet vanzelfsprekend. Daarvoor moet je tenminste traangas hebben ingeademd in Nicaragua, een standbeeld hebben opgehaald in Lelystad en een bloedzuiger op je voet hebben getrotseerd omdat je de hike op slippers dacht te kunnen doen.</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Paul</strong></p>
+                    <p>Paul is een reiziger. Ook over land, maar vooral in zijn hoofd. Hij reist dan naar plekken waar bijna niemand komt; van vraagstukken over kwallen tot sterke businessmodellen. Een soort orakel voor out-of-the-boxideeen. Laat je dus niet misleiden door zijn Goofy-motoriek, deze man is misschien wel het brein achter je volgende avontuur. Want avonturen hebben Paul en Tian velen beleefd. In de kano, waar zij niet leerden vissen. In de schwebebaan, die een paar stops te lang bleek. Op het voetbalveld, waar een elftal Georgische beren ons deed twijfelen aan onze plannen. In de redactie van het taxibedrijf Zaïre, wat een unaniem groot succes was. Wij hebben Paul zijn brein weten te strikken om een tijdje rond te dobberen in het SAAM-festivalmeer. Dat gaat ongetwijfeld leiden tot nieuwe avonturen, wij kijken ernaar uit!</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Olmo</strong></p>
+                    <p>Dit onderdeel van de festivalcrew heeft zó veel kennis in huis op het gebied van feestjes dat het gek zou zijn om er geen gebruik van te maken. Zo leerde hij Tian dat je Schultenbrau eigenlijk niet onder de 25 graden Celsius mag drinken, en dat je hem het beste op drinktemperatuur krijgt op de verwarming. Dat leerde hij bij moeilijke vakken als geothermie, die Tian niet koos omdat ze teveel moeite kostten. Het blijft niet bij kennis. In principe kun je Olmo uitdagen voor iedere kroegsport en verwachten dat je pakkie krijgt. Maar veel belangrijker: Olmo is de gezelligste vent die je gaat vinden. Geen mens die hem niet mag. En wij mogen hem zelfs heel veel! Wat een geluk dat we op hem kunnen rekenen.</p>
+                    
+                </div>
+            </div>
                 
                 <!-- DJs uitklapbaar -->
                 <div class="credit-item">
@@ -1042,20 +1106,7 @@
                     </div>
                 </div>
                 
-                <!-- BABS uitklapbaar -->
-                <div class="credit-item" onclick="toggleCredit(this)">
-                    <div class="credit-header">
-                        <h3>BABS</h3>
-                        <span class="credit-toggle">+</span>
-                    </div>
-                    <div class="credit-content">
-                        <p><strong>Teun van der Ven</strong></p>
-                        <p>Met zijn jarenlang opgebouwde kennis over de bruid en bruidegom is Teun van der Ven de perfecte BABS. Zijn talenten reiken ver: van Roller Coaster Typhoon- en Runescape-master tot absolute expert in "Janske inbouwen met K'NEX". Maar ook buiten de spellen en bouwsels heeft hij bijzondere kwaliteiten, want in zijn werk houdt Teun zich bezig met het voorspellen van de toekomst. En laten we eerlijk zijn: dat komt als BABS natuurlijk heel goed van pas. Je trouwt tenslotte alleen twee mensen als er ook enig toekomstperspectief in zit!</p>
-                        <p>Tijdens zijn studententijd heeft Teun bovendien bakken ervaring opgedaan in spreken voor publiek. Teun wist altijd met humor, warmte en een vleugje eigenzinnigheid zijn publiek mee te nemen. Precies die kwaliteiten zorgen ervoor dat wij niet alleen vol vertrouwen zijn dat hij ons verhaal prachtig zal vertellen, maar ook dat hij de ceremonie een unieke, persoonlijke en onvergetelijke sfeer zal geven.</p>
-                        <p>Wij zijn ontzettend blij dat Teun ons gaat trouwen en kijken enorm uit naar zijn woorden en zijn verhaal op onze grote dag!</p>
-                        <!-- <div class="credit-image">[Foto Teun]</div> -->
-                    </div>
-                </div>
+               
             </div>
         </div>
     </section>
@@ -1130,29 +1181,29 @@
                 <form id="rsvpForm">
                     <!-- Naam -->
                     <div class="form-group">
-                        <label for="naam">Naam</label>
+                        <label for="naam">NAAM</label>
                         <input type="text" id="naam" name="naam" placeholder=" " required>
                     </div>
                     
                     <!-- Email -->
                     <div class="form-group">
-                        <label for="email">E-mail</label>
+                        <label for="email">E-MAIL</label>
                         <input type="email" id="email" name="email" placeholder=" " required>
                     </div>
                     
                     <!-- Aanwezigheid -->
                     <div class="form-group">
-                        <label for="aanwezigheid">Aanwezigheid</label>
+                        <label for="aanwezigheid">AANWEZIGHEID</label>
                         <select id="aanwezigheid" name="aanwezigheid" required>
                             <option value="">Selecteer een optie</option>
-                            <option value="Ja">Ja</option>
-                            <option value="Nee">Nee</option>
+                            <option value="Ja">JA! Ik ben erbij!</option>
+                            <option value="Nee">Helaas, ik kan niet</option>
                         </select>
                     </div>
                     
                     <!-- Aantal personen -->
                     <div class="form-group">
-                        <label for="aantal">Aantal personen</label>
+                        <label for="aantal">AANTAL PERSONEN</label>
                         <select id="aantal" name="aantal" required>
                             <option value="">Selecteer aantal</option>
                             <option value="1">1</option>
@@ -1162,7 +1213,7 @@
                     
                     <!-- Kamperen -->
                     <div class="form-group">
-                        <label for="kamperen">Kamperen?</label>
+                        <label for="kamperen">KAMPEREN?</label>
                         <select id="kamperen" name="kamperen" required>
                             <option value="">Selecteer een optie</option>
                             <option value="Ja">Ja</option>
@@ -1172,7 +1223,7 @@
                     
                     <!-- Opmerkingen -->
                     <div class="form-group">
-                        <label for="opmerkingen">Dieetwensen / Opmerkingen</label>
+                        <label for="opmerkingen">OPMERKINGEN</label>
                         <textarea id="opmerkingen" name="opmerkingen" rows="3" placeholder="Allergieën, dieetwensen of andere opmerkingen"></textarea>
                     </div>
                     
@@ -1331,29 +1382,3 @@ window.onload = function() {
 </body>
 
 </html>
-rsvpForm {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            background-color: var(--light-pink);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 3px solid var(--soft-yellow);
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            color: var(--dark-blue);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        #
