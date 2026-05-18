@@ -337,30 +337,47 @@
             background-color: var(--white);
         }
 
+        .lineup-day {
+            margin-bottom: 2.5rem;
+        }
+
+        .lineup-day-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--magenta);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--light-pink);
+        }
+
         .lineup-grid {
             display: grid;
             grid-template-columns: 1fr; /* 1 kolom op mobile */
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1rem;
         }
 
         .lineup-item {
             background: linear-gradient(135deg, var(--light-pink) 0%, var(--soft-yellow) 100%);
-            padding: 1.5rem;
+            padding: 1.2rem 1.5rem;
             border-radius: 15px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
             transition: transform 0.3s ease;
         }
 
         .lineup-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .lineup-time {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 0.5rem;
+            min-width: 70px;
+            flex-shrink: 0;
         }
 
         .lineup-event {
@@ -754,6 +771,16 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .lineup-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .lineup-time {
+                min-width: auto;
+            }
+
             .location-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -822,7 +849,7 @@
 
             /* Grid layouts voor desktop */
             .lineup-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
 
             /* Credits blijft 1 kolom voor leesbaarheid */
@@ -924,6 +951,24 @@
                     <h3>Dresscode</h3>
                     <p>Festival chique! Trek je mooiste festivaloutfit aan: kleurrijk, comfortabel en vooral lekker dansbaar. Het terrein bestaat uit zand, klei en een stukje reliëf; trek dus zeker geen hakken aan! Met cowboylaarzen scoor je punten bij Janske en Tian vindt chique op sneakers ook een mooie slogan.</p>
                 </div>
+
+                <!-- Tentenplan -->
+                <div class="festival-item">
+                    <h3>Tentenplan</h3>
+                    <p>Wat leuk dat je blijft slapen! Gedeelde kater is halve kater. We verzoeken je dan een uur eerder te komen, zodat je stressvrij de tijd hebt om je festivaltent op te gooien en je luchtbed op te blazen. Campinghost Paul (a.k.a. 'De Uiterwaard') zal dit in goede banen geleiden. Let wel: hij is corrupt!</p>
+                </div>
+
+                <!-- Schoenen -->
+                <div class="festival-item">
+                    <h3>Schoenen</h3>
+                    <p>Gedurende de dag loop je over een grindpad, klim je over een hekje, loop je over een strandje, door de ruwe grond van de uiterwaard, naar het festivalterrein waar een helling van 25% je naar het toilet brengt. Ons advies: trek lekker dichte schoenen aan! Bijvoorbeeld sneakers of cowboylaarzen. Ga je toch voor de uitdaging, neem ze dan in ieder geval mee 🙂</p>
+                </div>
+
+                <!-- Zwemmen -->
+                <div class="festival-item">
+                    <h3>Zwemmen</h3>
+                    <p>We gaan op dit moment natuurlijk gewoon uit van 25+ °C. We kunnen zo de Maas in the day after! Slaap je op de camping of in de buurt, neem dan zeker je mooiste zwempak, je adidas badslippers of crocs en een handdoek mee. Even dat pils uit je haar en de mayonaise uit je snor spoelen. Hou je van vissen? Kan ook gewoon. Weet wel: het aas kiest de man en niet andersom.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -932,22 +977,54 @@
     <section id="lineup" class="section lineup">
         <div class="container">
             <h2 class="section-title">Line-up</h2>
-            <div class="lineup-grid">
-                <div class="lineup-item">
-                    <div class="lineup-time">13:00</div>
-                    <div class="lineup-event">Arrivee</div>
+
+            <!-- Dag 1: 18 Juli -->
+            <div class="lineup-day">
+                <div class="lineup-day-title">Zaterdag 18 Juli</div>
+                <div class="lineup-grid">
+                    <div class="lineup-item">
+                        <div class="lineup-time">13:00</div>
+                        <div class="lineup-event">Slaap je op de camping? Kom om 13:00!</div>
+                    </div>
+                    <div class="lineup-item">
+                        <div class="lineup-time">14:00</div>
+                        <div class="lineup-event">Inloop! Houd rekening met parkeren en wandelen.</div>
+                    </div>
+                    <div class="lineup-item">
+                        <div class="lineup-time">14:30</div>
+                        <div class="lineup-event">De ceremonie begint</div>
+                    </div>
+                    <div class="lineup-item">
+                        <div class="lineup-time">16:00</div>
+                        <div class="lineup-event">Het festival is geopend!</div>
+                    </div>
+                    <div class="lineup-item">
+                        <div class="lineup-time">18:00</div>
+                        <div class="lineup-event">INFINITE PAELLA</div>
+                    </div>
+                    <div class="lineup-item">
+                        <div class="lineup-time">19:00</div>
+                        <div class="lineup-event">DJ Ries trapt hem af</div>
+                    </div>
                 </div>
-                <div class="lineup-item">
-                    <div class="lineup-time">13:30</div>
-                    <div class="lineup-event">Start Ceremonie</div>
-                </div>
-                <div class="lineup-item">
-                    <div class="lineup-time">15:00</div>
-                    <div class="lineup-event">Start Festival</div>
-                </div>
-                <div class="lineup-item">
-                    <div class="lineup-time">00:00</div>
-                    <div class="lineup-event">Laatste Nummer</div>
+            </div>
+
+            <!-- Dag 2: 19 Juli -->
+            <div class="lineup-day">
+                <div class="lineup-day-title">Zondag 19 Juli</div>
+                <div class="lineup-grid">
+                    <div class="lineup-item">
+                        <div class="lineup-time">10:00</div>
+                        <div class="lineup-event">Brak ontbijt</div>
+                    </div>
+                    <div class="lineup-item">
+                        <div class="lineup-time">11:00</div>
+                        <div class="lineup-event">Zwemmen</div>
+                    </div>
+                    <div class="lineup-item">
+                        <div class="lineup-time">21:00</div>
+                        <div class="lineup-event">Staat NLD in de WK-voetbalfinale? Saamkijks!</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -965,8 +1042,11 @@
                         <span class="location-toggle">+</span>
                     </div>
                     <div class="location-content">
-                        <p>Op de Marense Dijk zelf zijn parkeermogelijkheden en op een nabijgelegen pad. In de overzichtskaart vind je hier de exacte locatie van.</p>
-                        <!-- <div class="location-image">[Parkeer kaart afbeelding]</div> -->
+                        <p>We mogen gebruik maken van een stuk grond van de gemeente Oss. Als je uit Oss komt dan ben je voor TOP. Dit zou meer dan genoeg ruimte moeten zijn, maar toch het verzoek om enigszins rekening te houden met vrije doorgang voor iedereen. Locatie en route naar het feest hieronder aangegeven. Dit zal ook met bordjes worden aangegeven!</p>
+                        <p><strong>Stap 1.</strong> Navigeer naar Marense Dijk 24 (31UFT63774050). Je komt normaal gesproken aanrijden over de blauwe lijn.</p>
+                        <p><strong>Stap 2.</strong> Sla rechtsaf waar de navigatie je links de dijk op stuurt. Nogmaals, hier staan bordjes. Jullie kunnen dit!</p>
+                        <p><strong>Stap 3a:</strong> Sta je op de camping? Loop dan de groene route (300 meter).</p>
+                        <p><strong>Stap 3b:</strong> Sta je niet op de camping? Loop dan de gele route (600 meter).</p>
                     </div>
                 </div>
                 
@@ -1182,6 +1262,10 @@
                 <div class="qa-item">
                     <h3 class="qa-question">Ik heb een talent en wil dit graag op het podium laten zien, mag dit?</h3>
                     <p class="qa-answer">Uiteraard! Pak je podium en verras ons!</p>
+                </div>
+                <div class="qa-item">
+                    <h3 class="qa-question">Staat Nederland op zondag 19 juli in de WK-voetbalfinale? Kan ik dan blijven kijken?</h3>
+                    <p class="qa-answer">Ik denk dat de bookmakers en analisten het er over eens zijn dat een Nederlandse finaleplaats niet in de lijn der verwachting ligt. Maar mochten we toch zo ver komen, dan zorgen wij voor een groot scherm en een extra fustje bier. Saamkijks!</p>
                 </div>
             </div>
         </div>
